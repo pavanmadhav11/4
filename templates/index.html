@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python to Flowchart</title>
+    <script type="module">
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+        mermaid.initialize({startOnLoad:true});
+    </script>
+</head>
+<body>
+    <h1>Convert Python Code to Flowchart</h1>
+
+    <form method="POST">
+        <textarea name="code" rows="10" cols="50" placeholder="Paste your Python code here..."></textarea><br><br>
+        <button type="submit">Generate Flowchart</button>
+    </form>
+
+    {% if chart_url %}
+        <h2>Your Flowchart</h2>
+        <div class="mermaid">
+            {{ chart_url | safe }}
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
